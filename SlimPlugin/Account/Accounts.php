@@ -1,5 +1,5 @@
 <?php
-namespace SlimApp;
+namespace SlimPlugin\Account;
 class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
 {
 	public function __construct()
@@ -38,6 +38,18 @@ class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
 		{
 			return array(false, false);
 		}
+	}
+	public static function checkHash($mail, $hash)
+	{
+		$res = Accounts::find(NULL, array("mail"=>$mail, "linkhash"=>$hash));
+		if(count($res)==1)
+		{
+			$res[0]->setStatus("aktiv");
+			$res[0]->save();
+			return true;
+		}
+		return false;
+
 	}
 	public function register()
 	{
@@ -86,11 +98,11 @@ class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
         }
 
 	}
-	public function save()
+	/*public function save()
 	{
 		throw new \Exception("Accounts don't have save, use register or update instand", 1);
 		
-	}
+	}*/
 	private function generateRandomString($length = 10) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	    $randomString = '';
