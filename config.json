@@ -1,0 +1,6 @@
+{
+	"name":"Account",
+	"bootstrap":false,
+	"loadcontroller":true,
+	"controller":"../vendor/slimapp/account/controller.php"
+}
