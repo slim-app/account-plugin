@@ -4,7 +4,10 @@
  */
 $app->group('/account', function () use ($app) {
     $app->get('/login', function () use ($app) {
-        $app->render(__DIR__.'/views/login.php', array());
+    	$app->config(array(
+		    'templates.path' => __DIR__."/"
+		));
+        $app->render('views/login.php', array());
     });
     $app->post('/login', function () use ($app)
     {
