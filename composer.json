@@ -1,0 +1,20 @@
+{
+    "name": "slimapp/account",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kruemel",
+            "email": "kruemel@byte.gs"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "sspssp/mongodatahandler":"*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SlimPlugin\\Account": ""
+        }
+    }
+}

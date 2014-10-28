@@ -1,0 +1,15 @@
+{
+	"params":
+	{
+		"firstname" : {"regex":".*", "requires":"1"},
+		"lastname" : {"regex":".*", "requires":"1"},
+		"street" : {"regex":".*", "requires":"1"},
+		"housenumber" : {"regex":".*", "requires":"1"},
+		"postcode" : {"regex":".*", "requires":"1"},
+		"city" : {"regex":".*", "requires":"1"},
+		"mail" : {"regex":"^[_a-zA-Z0-9-](\\.{0,1}[_a-zA-Z0-9-+])*@([a-zA-Z0-9-]{1,}\\.){0,}[a-zA-Z0-9-]{1,}(\\.[a-zA-Z]{2,63}){1,2}$", "requires":"1", "unique":"1"},
+		"pwhash" : {"regex":"[a-z0-9]{128}", "requires":"1"},
+		"linkhash": {"regex":"[a-z0-9]*", "requires":"0"},
+		"status" : {"regex":".*", "requires":"1", "default":"waitingMail"}
+	}
+}
