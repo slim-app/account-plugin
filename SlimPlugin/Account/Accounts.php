@@ -111,7 +111,7 @@ class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
 	    }
 	    return $randomString;
 	}
-	private function isLogin()
+	private static function isLogin()
 	{
 		if(isset($_SESSION["id"]) && $_SESSION["id"]!==false)
 		{
