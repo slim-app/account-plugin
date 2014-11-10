@@ -51,7 +51,7 @@ class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
 		return false;
 
 	}
-	public function register()
+	public function register($url = NULL)
 	{
 		$mongo = $this->mongo;
 		if($mongo == NULL)
@@ -80,7 +80,14 @@ class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
 		}
 		$c = $mongo->selectCollection($this->name);
 		$c->save($array);
-		$array["url"] = \url::createURL("account/confirm/".base64_encode($this->getMail())."/".$this->getLinkHash());
+		if($url==NULL)
+		{
+			$array["url"] = \url::createURL("account/confirm/".base64_encode($this->getMail())."/".$this->getLinkHash());
+		}
+		else
+		{
+			$array["url"] = $url."/".$this->getLinkHash();
+		}
 		$mailContent = \SlimApp\PHPMailer::renderTemplate("account", "register", $array);
 		$mail = \SlimApp\PHPMailer::getPHPMailer();
 		$mail->addAddress($this->getMail());
