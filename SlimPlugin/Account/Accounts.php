@@ -86,7 +86,7 @@ class Accounts extends \SSP\Mongo\Model\Basic\MongoModel
 		}
 		else
 		{
-			$array["url"] = $url."/".$this->getLinkHash();
+			$array["url"] = $url."/".base64_encode($this->getMail())."/".$this->getLinkHash());
 		}
 		$mailContent = \SlimApp\PHPMailer::renderTemplate("account", "register", $array);
 		$mail = \SlimApp\PHPMailer::getPHPMailer();
